@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import NewBoardForm from "./NewBoardForm";
-import Square from "./Square";
+import React, { Component } from 'react';
+import ValuesForm from './ValuesForm';
+import NameForm from './NameForm';
+import Square from './Square';
 
 export default class Board extends Component {
   state = {
-    userName: "",
+    userName: '',
     squares: [],
   };
   renderSquares = () => {
@@ -27,12 +28,10 @@ export default class Board extends Component {
   render() {
     return (
       <>
-        <h2 className="name">{this.state.userName}</h2>
-        <div className="board">{this.renderSquares()}</div>
-        <NewBoardForm
-          parentNameCallback={this.handleNameCallback}
-          parentValueCallback={this.handleValueCallback}
-        />
+        <h2 className='name'>{this.state.userName}</h2>
+        <div className='board'>{this.renderSquares()}</div>
+        <NameForm parentNameCallback={this.handleNameCallback} />
+        <ValuesForm parentValueCallback={this.handleValueCallback} />
       </>
     );
   }
