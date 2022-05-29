@@ -9,10 +9,6 @@ export default class ValuesForm extends Component {
     let et = event.target;
     this.props.parentValueCallback(et.userName.value);
     et.userName.value = '';
-    et.userName.value === ''
-      ? alert('Wpisz wartość')
-      : this.setState((prev) => ({ counter: prev.counter + 1 }));
-    if (this.state.counter === 16) event.target.style.display = 'none';
     console.log(this.state.counter);
   };
 
