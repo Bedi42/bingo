@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import ValuesForm from './ValuesForm';
+import NameForm from './NameForm';
 import Square from './Square';
 
 export default class Board extends Component {
   state = {
     userName: '',
-    squares: Array(16).fill('pusto'),
+    squares: [],
   };
   renderSquares = () => {
     let all = [];
@@ -13,11 +15,23 @@ export default class Board extends Component {
     }
     return all.map((el) => el);
   };
+
+  handleNameCallback = (childData) => {
+    this.setState({ userName: childData });
+  };
+  handleValueCallback = (childData) => {
+    this.setState((prevState) => ({
+      squares: [...prevState.squares, childData],
+    }));
+  };
+
   render() {
     return (
       <>
-        <h2 className='name'>Krzychu</h2>
+        <h2 className='name'>{this.state.userName}</h2>
         <div className='board'>{this.renderSquares()}</div>
+        <NameForm parentNameCallback={this.handleNameCallback} />
+        <ValuesForm parentValueCallback={this.handleValueCallback} />
       </>
     );
   }

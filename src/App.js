@@ -1,9 +1,8 @@
 import Board from "./Board";
-import NewBoardForm from "./NewBoardForm";
 import "./scss/main.scss";
 
 const App = () => {
-  return <NewBoardForm />;
+  return <Board />;
 };
 
 export default App;
