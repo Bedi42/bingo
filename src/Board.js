@@ -14,7 +14,7 @@ export default class Board extends Component {
     this.setState((prev) => ({
       checkingSquares: [
         ...prev.checkingSquares.slice(0, i),
-        true,
+        !prev.checkingSquares[i],
         ...prev.checkingSquares.slice(i + 1, prev.checkingSquares.length),
       ],
     }));
