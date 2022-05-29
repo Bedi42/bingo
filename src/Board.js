@@ -30,12 +30,22 @@ export default class Board extends Component {
       squares: [...prevState.squares, childData],
     }));
   };
+  handleStyleChange = (i) => {
+    console.log('style');
+    if (this.state.checkingSquares[i] === true) {
+      return { backgroundColor: 'gray' };
+    } else {
+      return { backgroundColor: 'transparent' };
+    }
+  };
+
   renderSquares = () => {
     let all = [];
     for (let i = 0; i < 16; i++) {
       all.push(
         <Square
           key={i}
+          style={this.handleStyleChange(i)}
           onClick={() => this.handleClick(i)}
           value={this.state.squares[i]}
         />
