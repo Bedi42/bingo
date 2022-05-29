@@ -13,11 +13,12 @@ export default class Board extends Component {
   handleClick = (i) => {
     this.setState((prev) => ({
       checkingSquares: [
-        ...prev.checkingSquares.slice(0, i - 1),
+        ...prev.checkingSquares.slice(0, i),
         true,
-        ...prev.checkingSquares.slice(i + 1, prev.checkingSquares.length - 1),
+        ...prev.checkingSquares.slice(i + 1, prev.checkingSquares.length),
       ],
     }));
+    console.log(i);
     console.log(this.state.checkingSquares);
   };
 
@@ -35,7 +36,7 @@ export default class Board extends Component {
       all.push(
         <Square
           key={i}
-          onClick={(i) => this.handleClick(i)}
+          onClick={() => this.handleClick(i)}
           value={this.state.squares[i]}
         />
       );
