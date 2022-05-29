@@ -7,13 +7,18 @@ export default class Board extends Component {
   state = {
     userName: '',
     squares: [],
+    checkingSquares: Array(16).fill(false),
   };
-  renderSquares = () => {
-    let all = [];
-    for (let i = 0; i < 16; i++) {
-      all.push(<Square key={i} value={this.state.squares[i]} />);
-    }
-    return all.map((el) => el);
+
+  handleClick = (i) => {
+    this.setState((prev) => ({
+      checkingSquares: [
+        ...prev.checkingSquares.slice(0, i - 1),
+        true,
+        ...prev.checkingSquares.slice(i + 1, prev.checkingSquares.length - 1),
+      ],
+    }));
+    console.log(this.state.checkingSquares);
   };
 
   handleNameCallback = (childData) => {
@@ -24,7 +29,19 @@ export default class Board extends Component {
       squares: [...prevState.squares, childData],
     }));
   };
-
+  renderSquares = () => {
+    let all = [];
+    for (let i = 0; i < 16; i++) {
+      all.push(
+        <Square
+          key={i}
+          onClick={(i) => this.handleClick(i)}
+          value={this.state.squares[i]}
+        />
+      );
+    }
+    return all.map((el) => el);
+  };
   render() {
     return (
       <>

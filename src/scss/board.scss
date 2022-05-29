@@ -26,6 +26,7 @@ body {
 }
 
 .square {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,4 +34,5 @@ body {
   height: 8rem;
   border: 1px solid black;
   margin: 1px;
+  font-size: 2rem;
 }
